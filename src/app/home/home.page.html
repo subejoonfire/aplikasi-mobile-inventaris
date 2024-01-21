@@ -1,0 +1,88 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <img class="logo" src="/assets/icon/20240112_155502_0000.png" alt="" />
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title class="judul"> Inventaris Hima TI </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <div id="container">
+      <ion-toolbar class="tambah-barang">
+        <ion-title class="tambah"> Tambah Barang </ion-title>
+      </ion-toolbar>
+
+      <ion-input
+        [(ngModel)]="nama"
+        placeholder="Nama Barang"
+        clearOnEdit="true"
+      ></ion-input>
+
+      <ion-input
+        [(ngModel)]="jumlah"
+        placeholder="Jumlah"
+        clearOnEdit="true"
+      ></ion-input>
+
+      <ion-button expand="block" (click)="tambahBarang()"
+        >Masukan Barang</ion-button
+      >
+    </div>
+    <ion-item-divider>
+      <ion-label>Daftar Barang</ion-label>
+    </ion-item-divider>
+    <ion-content>
+      <ion-item>
+        <ion-label>Nama</ion-label>
+        <ion-label>Jumlah</ion-label>
+        <ion-label>Hapus</ion-label>
+        <ion-label>Edit</ion-label>
+      </ion-item>
+      <ion-item *ngFor="let barang of barangList">
+        <ion-label>{{ barang.nama }}</ion-label>
+        <ion-label>{{ barang.jumlah }}</ion-label>
+        <ion-label>
+          <ion-icon (click)="hapusBarang(barang.idbarang)" slot="start" name="trash"></ion-icon>
+        </ion-label>
+        <ion-label>
+          <ion-icon (click)="editBarang(barang)" slot="start" name="pencil"></ion-icon>
+        </ion-label>
+      </ion-item>
+    </ion-content>
+  </ion-content>
+</ion-content>
+
+<!-- Modal -->
+
+<ion-modal [isOpen]="modalTerbuka" (willDismiss)="onWillDismiss($event)">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-button (click)="cancel()">kembali</ion-button>
+        </ion-buttons>
+        <ion-title>Edit Barang</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <ion-header>
+        <ion-toolbar>
+          <ion-item>
+            <ion-label>Nama Barang</ion-label>
+            <ion-input [(ngModel)]="barangEdit.nama" type="text" placeholder="Nama Barang"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Jumlah Barang</ion-label>
+            <ion-input [(ngModel)]="barangEdit.jumlah" type="text" placeholder="Jumlah Barang"></ion-input>
+          </ion-item>
+          <ion-button (click)="editAction(barangEdit)" expand="block"> Masukkan Barang </ion-button>
+        </ion-toolbar>
+      </ion-header>
+    </ion-content>
+  </ng-template>
+</ion-modal>

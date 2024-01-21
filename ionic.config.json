@@ -1,0 +1,7 @@
+{
+  "name": "inventaris-hmti",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,39 @@
+ion-header {
+  ion-toolbar {
+    img.logo {
+      max-width: 100px; /* Sesuaikan ukuran maksimum logo */
+      max-height: 50px; /* Sesuaikan ukuran maksimum logo */
+    }
+  }
+}
+
+ion-content {
+  #container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px;
+    gap: 16px; /* Atur jarak antar elemen di dalam container */
+
+    ion-toolbar.tambah-barang {
+      --background: #454545; /* Atur warna latar belakang sesuai kebutuhan */
+      ion-title.tambah {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 16px;
+      }
+    }
+
+    ion-textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+
+      &.item {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
